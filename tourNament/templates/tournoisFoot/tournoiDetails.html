@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/tournoisFoot/tournoiDetails.css' %}"
+    />
+    <title>Détails du tournoi</title>
+  </head>
+  <body>
+    {% if tournoi %}
+    <h1>Détails du tournoi "{{ tournoi.nom }}"</h1>
+
+    <div class="container">
+      <div class="matches">
+        <h2>Matchs</h2>
+        <ul>
+          {% for match in tournoi.match_set.all %}
+          <li>
+            {{ match.equipe1.nom }} vs {{ match.equipe2.nom }}
+            <br />
+            <img
+              src="{{ match.equipe1.logo }}"
+              alt="{{ match.equipe1.nom }} logo"
+            />
+            {{ match.score_equipe1 }} - {{ match.score_equipe2 }}
+            <img
+              src="{{ match.equipe2.logo }}"
+              alt="{{ match.equipe2.nom }} logo"
+            />
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="standings">
+        <h2>Classement</h2>
+        <table>
+          <tr>
+            <th>Équipe</th>
+            <th>Matchs Joués</th>
+            <th>Buts Pour</th>
+            <th>Buts Contre</th>
+            <th>Points</th>
+          </tr>
+          {% for equipe in equipes %}
+          <tr>
+            <td>{{ equipe.nom }}</td>
+            <td>{{ equipe.nb_matchs_joues }}</td>
+            <td>{{ equipe.buts_pour }}</td>
+            <td>{{ equipe.buts_contre }}</td>
+            <td>{{ equipe.points }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    {% endif %}
+  </body>
+</html>

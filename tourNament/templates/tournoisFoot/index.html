@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tournois de Football</title>
+    <link rel="stylesheet" href="{% static 'css/tournoisFoot/index.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Tournois de Football</h1>
+    </div>
+
+    <div class="top-bar">
+      <a href="{% url 'addTournoiForm' %}" class="btn">Ajouter un tournoi</a>
+      <a href="{% url 'index' %}">Retour à l'accueil</a>
+    </div>
+
+    <div style="text-align: center">
+      <h1>Choisir un tournoi passé :</h1>
+      <select id="select-tournoi">
+        <option value="">Sélectionner un tournoi</option>
+        {% for tournoi in tournois %}
+        <option value="{{ tournoi.id }}">{{ tournoi.nom }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div id="tournoi-details"></div>
+
+    <script>
+      $(document).ready(function () {
+        $("#select-tournoi").change(function () {
+          var tournoiId = $(this).val();
+
+          if (!tournoiId) {
+            $("#tournoi-details").html("");
+            return;
+          }
+          $.ajax({
+            url: "tournoiDetails/",
+            type: "GET",
+            data: {
+              tournoi_id: tournoiId,
+            },
+            success: function (data) {
+              $("#tournoi-details").html(data.html);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

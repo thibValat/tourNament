@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <style>
+      body {
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        text-align: center;
+      }
+
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 50px;
+      }
+
+      p {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        color: white;
+      }
+
+      a {
+        color: white;
+      }
+    </style>
+    <title>Coming Soon ...</title>
+  </head>
+  <body>
+    <div>
+      <span>Coming Soon ...</span>
+      <p><a href="{% url 'index' %}">Retour à l'accueil</a></p>
+    </div>
+  </body>
+</html>

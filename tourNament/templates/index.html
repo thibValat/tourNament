@@ -1,0 +1,39 @@
+<html lang="fr">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tourNament</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+  </head>
+  <body>
+    <h1 class="title">tourNament</h1>
+    <div class="container">
+      <div
+        class="sport-card"
+        style="background-image: url('{% static "assets/footBackground.jpg" %}')"
+      >
+        <a href="{% url 'indexFoot' %}">Football</a>
+      </div>
+      <div
+        class="sport-card coming-soon"
+        style="background-image: url('{% static "assets/basketBackground.jpg" %}'); opacity: 0.3;"
+      >
+        <a href="{% url 'indexBasket' %}">Coming soon ...</a>
+      </div>
+      <div
+        class="sport-card coming-soon"
+        style="background-image: url('{% static "assets/tennisBackground.jpeg" %}'); opacity: 0.3;"
+      >
+        <a href="{% url 'indexTennis' %}">Coming soon ...</a>
+      </div>
+      <div
+        class="sport-card coming-soon"
+        style="background-image: url('{% static "assets/formuleBackground.jpeg" %}'); opacity: 0.3;"
+      >
+        <a href="{% url 'indexFormule' %}">Coming soon ...</a>
+      </div>
+    </div>
+    <p class="name"> Thibault VALAT</p>
+  </body>
+</html>

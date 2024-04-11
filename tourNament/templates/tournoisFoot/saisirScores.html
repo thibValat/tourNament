@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+  {%load static%}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/tournoisFoot/saisirScores.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/tournoisFoot/saisirScores.css' %}"
+    />
+    <title>Saisir les scores</title>
+  </head>
+  <body>
+    <h1>Saisir les scores pour le tournoi "{{ tournoi.nom }}"</h1>
+
+    <form action="{% url 'saisirScores' tournoi_id=tournoi.id %}" method="POST">
+      {% csrf_token %} {% for match in matchs %}
+      <h2>
+        <img
+          src="{{ match.equipe1.logo }}"
+          alt="{{ match.equipe1.nom }} logo"
+          class="team-logo"
+        />
+        {{ match.equipe1 }} vs {{ match.equipe2 }}
+        <img
+          src="{{ match.equipe2.logo }}"
+          alt="{{ match.equipe2.nom }} logo"
+          class="team-logo"
+        />
+      </h2>
+      <label for="id_score_equipe1_{{ match.id }}"
+        >Score {{ match.equipe1 }} :</label
+      >
+      <input
+        type="number"
+        id="id_score_equipe1_{{ match.id }}"
+        name="score_equipe1_{{ match.id }}"
+      /><br />
+      <label for="id_score_equipe2_{{ match.id }}"
+        >Score {{ match.equipe2 }} :</label
+      >
+      <input
+        type="number"
+        id="id_score_equipe2_{{ match.id }}"
+        name="score_equipe2_{{ match.id }}"
+      /><br />
+      {% endfor %}
+      <button type="submit">Enregistrer</button>
+    </form>
+
+    <a href="{% url 'indexFoot' %}">Retour</a>
+  </body>
+</html>

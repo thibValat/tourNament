@@ -1,0 +1,48 @@
+<html lang="fr">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/tournoisFoot/addTournoiForm.css' %}"
+    />
+    <title>Ajouter un tournoi</title>
+  </head>
+  <body>
+    <h1>Ajouter un tournoi</h1>
+    <form action="{% url 'addTournoiForm' %}" method="POST">
+      {% csrf_token %}
+      <label for="nom">Nom du tournoi :</label><br />
+      <input type="text" id="nom" name="nom" /><br />
+
+      <fieldset>
+        <legend>Choisir les équipes :</legend>
+        {% for equipe in equipes %}
+        <label for="{{ equipe.id }}">
+          <input
+            type="checkbox"
+            id="{{ equipe.id }}"
+            name="equipes"
+            value="{{ equipe.id }}"
+          />
+
+          <img
+            src="{{ equipe.logo }}"
+            alt="{{ equipe.nom }} logo"
+            width="40"
+            height="40"
+          />
+          {{ equipe }} </label
+        ><br />
+        {% endfor %}
+        <a href="{% url 'admin:tournoisFoot_equipe_add' %}" target="_blank"
+          >Ajouter une équipe (administrateurr)</a
+        >
+      </fieldset>
+
+      <button type="submit">Ajouter</button>
+    </form>
+    <a href="{% url 'indexFoot' %}">Retour</a>
+  </body>
+</html>
