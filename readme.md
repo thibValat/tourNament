@@ -67,4 +67,4 @@ password : root
 ## Vidéo d'utilisation
 
 Regardez cette vidéo pour une démonstration de l'utilisation du projet :
-[![Vidéo d'utilisation](https://drive.google.com/file/d/1uVatRzvYA7rwhqMTYoAfLe12zX2EH2wo/view?usp=drive_link)](<[lien_vers_video](https://drive.google.com/file/d/1uVatRzvYA7rwhqMTYoAfLe12zX2EH2wo/view?usp=drive_link)>)
+[https://drive.google.com/file/d/1uVatRzvYA7rwhqMTYoAfLe12zX2EH2wo/view?usp=drive_link](https://drive.google.com/file/d/1uVatRzvYA7rwhqMTYoAfLe12zX2EH2wo/view?usp=drive_link)
